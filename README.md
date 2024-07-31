@@ -66,3 +66,4 @@ INSERT INTO `facilities` (
     (10, 'MULTIMEDIA', 'WIFI', 'Computer Laboratory', 'Standing Aircon', '2', 'HIRAYA', NULL, 'facility/01J44GGSJ40ASXCHCZF4BEPHPA.jfif', '2024-07-31 13:43:51', '2024-07-31 13:43:51');
 
 *************************************
+88888888888888888888888888888888888888
