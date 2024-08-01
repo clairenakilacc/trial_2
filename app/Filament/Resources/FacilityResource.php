@@ -32,25 +32,30 @@ class FacilityResource extends Resource
                         Grid::make(2)
                             ->schema([
                                 Forms\Components\TextInput::make('name')
-                                    ->hint('Please enter a facility name, e.g., CL1 ')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder(' Facility name displayed on the door (e.g., CL1,CL2)'),
                                 Forms\Components\TextInput::make('connection_type')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Source of internet connectivity utilized in a facility (e.g., WiFi, Ethernet) '),
                                 Forms\Components\TextInput::make('facility_type')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('(e.g., Computer Laboratory, Office, Lecture Room)'),
                                 Forms\Components\TextInput::make('cooling_tools')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('System used for cooling a facility (e.g., AirCon, Ceiling Fan) '),
                                 Forms\Components\TextInput::make('floor_level')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Floor level of a building where facility is located (e.g., 1 for 1st Floor) '),
                                 Forms\Components\TextInput::make('building')
                                     ->required()
                                     ->maxLength(255)
-                                    ->default('HIRAYA'),
+                                    ->default('HIRAYA')
+                                    ->placeholder('e.g., '),
                             ]),
                     ]),
                 Section::make('Facility Image')
@@ -66,6 +71,7 @@ class FacilityResource extends Resource
                     ->schema([
                         Forms\Components\RichEditor::make('remarks')
                             ->required()
+                            ->placeholder('Anything that describes the facility (e.g., Computer lab with space for 30 students)')
                             ->formatStateUsing(fn (?string $state): string => $state ? strip_tags($state) : '')
                             ->disableToolbarButtons([
                                 'attachFiles'
