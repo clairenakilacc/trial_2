@@ -149,6 +149,7 @@ class EquipmentResource extends Resource
                 Tables\Columns\TextColumn::make('date_acquired')
                     ->label('Date Acquired')
                     ->searchable()
+                    
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('supplier')

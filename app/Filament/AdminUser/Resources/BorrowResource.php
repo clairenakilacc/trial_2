@@ -25,7 +25,7 @@ class BorrowResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('equipment_id')
-                    ->relationship('equipment', 'name')
+                    ->relationship('equipment', 'description')
                     ->nullable(),
                 Forms\Components\Select::make('facility_id')
                     ->relationship('facility', 'name')
