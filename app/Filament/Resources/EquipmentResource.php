@@ -120,49 +120,52 @@ class EquipmentResource extends Resource
                     ->label('Unit No.')
                     ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('description')
                     ->label('Description')
+                    ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('specifications')
                     ->label('Specifications')
+                    ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-
+                    ->toggleable(isToggledHiddenByDefault: false),  
                 Tables\Columns\TextColumn::make('facility.name')
                     ->label('Facility')
                     ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('category.description')
                     ->label('Category')
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('status')
                     ->label('Status')
+                    ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('date_acquired')
                     ->label('Date Acquired')
+                    ->sortable()
                     ->searchable()
-                    
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('supplier')
                     ->label('Supplier')
+                    ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('amount')
                     ->label('Amount')
+                    ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-
                 Tables\Columns\TextColumn::make('estimated_life')
                     ->label('Estimated Life')
                     ->searchable()
@@ -170,54 +173,60 @@ class EquipmentResource extends Resource
 
                 Tables\Columns\TextColumn::make('item_no')
                     ->label('Item No.')
+                    ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('property_no')
                     ->label('Property No.')
+                    ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('control_no')
                     ->label('Control No.')
+                    ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('serial_no')
                     ->label('Serial No.')
+                    ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('no_of_stocks')
                     ->label('No. of Stocks')
+                    ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('restocking_point')
                     ->label('Restocking Point')
+                    ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-
                 Tables\Columns\TextColumn::make('person_liable')
                     ->label('Person Liable')
+                    ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('remarks')
                     ->label('Remarks')
-                    ->searchable()
                     ->formatStateUsing(fn (string $state): string => strip_tags($state))
-                    ->toggleable(isToggledHiddenByDefault: true),
-
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                   
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()
                     ->sortable()
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Updated At')
                     ->dateTime()
                     ->sortable()
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

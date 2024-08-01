@@ -63,6 +63,7 @@ class FacilityResource extends Resource
                     ->schema([
                         Forms\Components\RichEditor::make('remarks')
                             ->required()
+                            ->formatStateUsing(fn (string $state): string => strip_tags($state))
                             ->disableToolbarButtons([
                                 'attachFiles'
                             ])
@@ -70,32 +71,48 @@ class FacilityResource extends Resource
             ]);
     }
 
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('connection_type')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('facility_type')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('cooling_tools')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('floor_level')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('building')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('remarks')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('facility_img')
-                    ->searchable(),
+                    ->formatStateUsing(fn (string $state): string => strip_tags($state))
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
+                    ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
+                    ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
