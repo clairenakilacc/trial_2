@@ -135,6 +135,7 @@ class EquipmentResource extends Resource
                 Tables\Columns\TextColumn::make('facility.name')
                     ->label('Facility')
                     ->sortable()
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('category.description')
                     ->label('Category')
@@ -205,6 +206,7 @@ class EquipmentResource extends Resource
                 Tables\Columns\TextColumn::make('remarks')
                     ->label('Remarks')
                     ->searchable()
+                    ->formatStateUsing(fn (string $state): string => strip_tags($state))
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('created_at')
