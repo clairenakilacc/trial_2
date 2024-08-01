@@ -101,7 +101,7 @@ class FacilityResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('remarks')
-                    ->formatStateUsing(fn (string $state): string => strip_tags($state))
+                    ->formatStateUsing(fn (?string $state): string => $state ? strip_tags($state) : '')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),

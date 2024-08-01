@@ -32,6 +32,7 @@ class FacilityResource extends Resource
                         Grid::make(2)
                             ->schema([
                                 Forms\Components\TextInput::make('name')
+                                    ->hint('Please enter a facility name, e.g., CL1 ')
                                     ->required()
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('connection_type')
@@ -65,7 +66,7 @@ class FacilityResource extends Resource
                     ->schema([
                         Forms\Components\RichEditor::make('remarks')
                             ->required()
-                            ->formatStateUsing(fn (string $state): string => strip_tags($state))
+                            ->formatStateUsing(fn (?string $state): string => $state ? strip_tags($state) : '')
                             ->disableToolbarButtons([
                                 'attachFiles'
                             ])
