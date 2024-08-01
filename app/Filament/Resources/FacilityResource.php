@@ -50,7 +50,7 @@ class FacilityResource extends Resource
                                 Forms\Components\TextInput::make('floor_level')
                                     ->required()
                                     ->maxLength(255)
-                                    ->placeholder('Floor level of a building where facility is located (e.g., 1 for 1st Floor) '),
+                                    ->placeholder('Floor level of a building where facility is located (e.g., Type 1 for 1st Floor) '),
                                 Forms\Components\TextInput::make('building')
                                     ->required()
                                     ->maxLength(255)
