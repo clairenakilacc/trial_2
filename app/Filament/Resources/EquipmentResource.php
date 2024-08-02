@@ -203,7 +203,7 @@ class EquipmentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('no_of_stocks')
-                    ->label('No. of Stocks & Unit')
+                    ->label('No. of Stocks')
                     ->formatStateUsing(function ($record) {
                         $description = optional($record->stockunit)->description;
                         return $record->no_of_stocks . ($description ? " ($description)" : '');
@@ -211,8 +211,6 @@ class EquipmentResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: false),
-
-                
 
                 Tables\Columns\TextColumn::make('restocking_point')
                     ->label('Restocking Point')
