@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('serial_no')->nullable();
             $table->integer('no_of_stocks');
             $table->integer('restocking_point');
+            $table->foreignId('stock_unit_id')->after('restocking_point')->constrained('stockunits')->onDelete('cascade');
             $table->string('person_liable')->nullable();
             $table->text('remarks')->nullable();
             $table->timestamps();

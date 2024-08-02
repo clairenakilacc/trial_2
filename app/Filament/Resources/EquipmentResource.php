@@ -29,16 +29,19 @@ class EquipmentResource extends Resource
                                 Forms\Components\TextInput::make('unit_no')
                                     ->label('Unit No.')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('It is a computer set number pasted on a ComLab table. Leave if inapplicable.'),
 
                                 Forms\Components\TextInput::make('description')
                                     ->label('Description')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('It is a brand name of an item/equipment.'),
                                 Forms\Components\TextInput::make('specifications')
                                     ->label('Specifications')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Anything that describes an item/equipment. You may enter its color or size.'),
                                 Forms\Components\Select::make('facility_id')
                                     ->label('Facility')
                                     ->relationship('facility', 'name')
@@ -89,14 +92,19 @@ class EquipmentResource extends Resource
                                     ->label('Serial No.')
                                     ->nullable()
                                     ->maxLength(255),
-                                Forms\Components\TextInput::make('no_of_stocks')
+                                Forms\Components\Select::make('no_of_stocks')
                                     ->label('No. of Stocks')
                                     ->required()
-                                    ->maxLength(255),
-                                Forms\Components\TextInput::make('restocking_point')
+                                    ->options(array_combine(range(1, 1000), range(1, 1000)))
+                                    ->default(fn (callable $get) => $get('no_of_stocks') . ' (' . optional($get('stock_unit'))->description . ')'),
+                                Forms\Components\Select::make('restocking_point')
                                     ->label('Restocking Point')
                                     ->required()
-                                    ->maxLength(255),
+                                    ->options(array_combine(range(1, 1000), range(1, 1000))),
+                                Forms\Components\Select::make('stock_unit_id')
+                                    ->label('Stock Unit')
+                                    ->relationship('stockunit', 'description')
+                                    ->required(),
                                 Forms\Components\TextInput::make('person_liable')
                                     ->label('Person Liable')
                                     ->nullable()
@@ -132,7 +140,7 @@ class EquipmentResource extends Resource
                     ->label('Specifications')
                     ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: false),  
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('facility.name')
                     ->label('Facility')
                     ->sortable()
@@ -168,6 +176,7 @@ class EquipmentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('estimated_life')
                     ->label('Estimated Life')
+                    ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
@@ -194,10 +203,17 @@ class EquipmentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('no_of_stocks')
-                    ->label('No. of Stocks')
+                    ->label('No. of Stocks & Unit')
+                    ->formatStateUsing(function ($record) {
+                        $description = optional($record->stockunit)->description;
+                        return $record->no_of_stocks . ($description ? " ($description)" : '');
+                    })
                     ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: false),
+
+                
+
                 Tables\Columns\TextColumn::make('restocking_point')
                     ->label('Restocking Point')
                     ->sortable()

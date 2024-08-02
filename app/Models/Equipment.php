@@ -35,7 +35,8 @@ class Equipment extends Model
         'control_no',
         'serial_no',
         'no_of_stocks',
-        'restocking_point', // Fixed typo: changed 'restocking point' to 'restocking_point'
+        'restocking_point',
+        'stock_unit_id',
         'person_liable',
         'remarks',
     ];
@@ -49,4 +50,11 @@ class Equipment extends Model
     {
         return $this->belongsTo(Facility::class);
     }
+
+    public function stockunit()
+    {
+        return $this->belongsTo(Stockunit::class, 'stock_unit_id'); // Corrected foreign key
+    }
+
+   
 }
