@@ -63,35 +63,43 @@ class EquipmentResource extends Resource
                                 Forms\Components\TextInput::make('date_acquired')
                                     ->label('Date Acquired')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('supplier')
                                     ->label('Supplier')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('amount')
                                     ->label('Amount')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('estimated_life')
                                     ->label('Estimated Life')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('item_no')
                                     ->label('Item No.')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('property_no')
                                     ->label('Property No.')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('control_no')
                                     ->label('Control No.')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('serial_no')
                                     ->label('Serial No.')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\Select::make('no_of_stocks')
                                     ->label('No. of Stocks')
                                     ->required()
@@ -108,11 +116,13 @@ class EquipmentResource extends Resource
                                 Forms\Components\TextInput::make('person_liable')
                                     ->label('Person Liable')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Refer to the equipment/item sticker. Leave if inapplicable.'),
                                 Forms\Components\TextInput::make('remarks')
                                     ->label('Remarks')
                                     ->nullable()
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->placeholder('Anything that describes an item/equipment.'),
                             ]),
                     ]),
                 
