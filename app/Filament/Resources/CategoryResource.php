@@ -25,7 +25,8 @@ class CategoryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('description')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->placeholder('Example: Keyboard, Mouse, Door')
             ]);
     }
 
@@ -34,14 +35,17 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
+                    ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

@@ -23,15 +23,29 @@ class StockunitResource extends Resource
     {
         return $form
             ->schema([
-                //
-            ]);
+                Forms\Components\TextInput::make('description')
+                ->required()
+                ->maxLength(255)
+                ->placeholder('It is a unit of an item/equipment stocks. Example: Boxes, Tray.')
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('description')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+            
             ])
             ->filters([
                 //

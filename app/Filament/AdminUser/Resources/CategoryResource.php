@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\AdminUser\Resources;
 
-use App\Filament\Resources\StockunitResource\Pages;
-use App\Filament\Resources\StockunitResource\RelationManagers;
-use App\Models\Stockunit;
+use App\Filament\AdminUser\Resources\CategoryResource\Pages;
+use App\Filament\AdminUser\Resources\CategoryResource\RelationManagers;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,21 +13,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class StockunitResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = Stockunit::class;
+    protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('description')
-                ->required()
-                ->maxLength(255)
-                ->placeholder('It is a unit of an item/equipment stocks. Example: Boxes, Tray.')
-        ]);
+                    ->required()
+                    ->maxLength(255)
+                    ->placeholder('Example: Keyboard, Mouse, Door')
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -39,13 +38,14 @@ class StockunitResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
+                    ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            
             ])
             ->filters([
                 //
@@ -70,9 +70,9 @@ class StockunitResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListStockunits::route('/'),
-            'create' => Pages\CreateStockunit::route('/create'),
-            'edit' => Pages\EditStockunit::route('/{record}/edit'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }
