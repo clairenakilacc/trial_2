@@ -36,7 +36,7 @@ class Equipment extends Model
         'serial_no',
         'no_of_stocks',
         'restocking_point',
-        'stock_unit_id',
+        'stock_unit',
         'person_liable',
         'remarks',
     ];
@@ -53,7 +53,7 @@ class Equipment extends Model
 
     public function stockunit()
     {
-        return $this->belongsTo(Stockunit::class, 'stock_unit_id'); // Corrected foreign key
+        return $this->belongsTo(Stockunit::class, 'stock_unit'); // Corrected foreign key
     }
 
    

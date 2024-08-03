@@ -11,7 +11,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('equipment', function (Blueprint $table) {
-            $table->foreignId('stock_unit_id')->after('restocking_point')->constrained('stockunits')->onDelete('cascade');
+           
+
+            // Add new column for stock unit description
+            $table->string('stock_unit')->nullable()->after('restocking_point');
         });
     }
 
@@ -21,8 +24,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('equipment', function (Blueprint $table) {
-            $table->dropForeign(['stock_unit_id']);
-            $table->dropColumn('stock_unit_id');
+            // Add back the stock_unit_id column
+            $table->foreignId('stock_unit_id')->after('restocking_point')->constrained('stockunits')->onDelete('cascade');
+            
+            // Drop the new stock_unit column
+            $table->dropColumn('stock_unit');
         });
     }
 };
