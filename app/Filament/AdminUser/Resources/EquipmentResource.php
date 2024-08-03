@@ -110,7 +110,7 @@ class EquipmentResource extends Resource
                                     ->label('Restocking Point')
                                     ->required()
                                     ->options(array_combine(range(1, 1000), range(1, 1000))),
-                                Forms\Components\Select::make('stock_unit_id')
+                                Forms\Components\Select::make('stock_unit')
                                     ->label('Stock Unit')
                                     ->relationship('stockunit', 'description')
                                     ->required(),
