@@ -35,22 +35,42 @@ class FacilityResource extends Resource
                                     ->required()
                                     ->maxLength(255)
                                     ->placeholder(' Facility name displayed on the door (e.g., CL1,CL2)'),
-                                Forms\Components\TextInput::make('connection_type')
+                                Forms\Components\Select::make('connection_type')
                                     ->required()
-                                    ->maxLength(255)
-                                    ->placeholder('Source of internet connectivity utilized in a facility (e.g., WiFi, Ethernet) '),
-                                Forms\Components\TextInput::make('facility_type')
+                                    ->options([
+                                        'none' => 'None',
+                                        'wifi' => 'Wi-Fi',
+                                        'ethernet' => 'Ethernet',
+                                        'both_wifi_and_ethernet'=>'Both Wi-Fi and Ethernet',
+                                        'fiber_optic' => 'Fiber Optic',
+                                        'cellular' => 'Cellular',
+                                        'bluetooth' => 'Bluetooth',
+                                        'satellite' => 'Satellite',
+                                        'dsl' => 'DSL',
+                                        'cable' => 'Cable',
+                                    ]),
+                                Forms\Components\Select::make('facility_type')
                                     ->required()
-                                    ->maxLength(255)
-                                    ->placeholder('(e.g., Computer Laboratory, Office, Lecture Room)'),
-                                Forms\Components\TextInput::make('cooling_tools')
+                                    ->options([
+                                        'room' => 'Room',
+                                        'office' => 'Office',
+                                        'computer_laboratory' => 'Computer Laboratory',
+                                        'incubation_hub'=>'Incubation Hub',
+                                        'robotic_hub' => 'Robotic Hub',
+                                        'hall' => 'Hall',
+                                    ]),
+                                Forms\Components\Select::make('cooling_tools')
                                     ->required()
-                                    ->maxLength(255)
-                                    ->placeholder('System used for cooling a facility (e.g., AirCon, Ceiling Fan) '),
-                                Forms\Components\TextInput::make('floor_level')
+                                    ->options([
+                                        'none' => 'None',
+                                        'aicons' => 'Aircons',
+                                        'ceiling_fans' => 'Ceiling Fans',
+                                        'both_aircon_and_ceiling_fans'=>'Both aircons and ceiling fans',
+                                        
+                                    ]),
+                                Forms\Components\Select::make('floor_level')
                                     ->required()
-                                    ->maxLength(255)
-                                    ->placeholder('Floor level of a building where facility is located (e.g., Type 1 for 1st Floor) '),
+                                    ->options(array_combine(range(1, 4), range(1, 4))),
                                 Forms\Components\TextInput::make('building')
                                     ->required()
                                     ->maxLength(255)
